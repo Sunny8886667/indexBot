@@ -5,7 +5,6 @@ package com.scomarlf.generated;
 
 
 import com.scomarlf.generated.tables.Approve;
-import com.scomarlf.generated.tables.Constant;
 import com.scomarlf.generated.tables.Dictionary;
 import com.scomarlf.generated.tables.Ecology;
 import com.scomarlf.generated.tables.Enroll;
@@ -13,7 +12,6 @@ import com.scomarlf.generated.tables.FlywaySchemaHistory;
 import com.scomarlf.generated.tables.Record;
 import com.scomarlf.generated.tables.User;
 import com.scomarlf.generated.tables.records.ApproveRecord;
-import com.scomarlf.generated.tables.records.ConstantRecord;
 import com.scomarlf.generated.tables.records.DictionaryRecord;
 import com.scomarlf.generated.tables.records.EcologyRecord;
 import com.scomarlf.generated.tables.records.EnrollRecord;
@@ -43,7 +41,6 @@ public class Keys {
     // -------------------------------------------------------------------------
 
     public static final UniqueKey<ApproveRecord> KEY_APPROVE_PRIMARY = UniqueKeys0.KEY_APPROVE_PRIMARY;
-    public static final UniqueKey<ConstantRecord> KEY_CONSTANT_PRIMARY = UniqueKeys0.KEY_CONSTANT_PRIMARY;
     public static final UniqueKey<DictionaryRecord> KEY_DICTIONARY_PRIMARY = UniqueKeys0.KEY_DICTIONARY_PRIMARY;
     public static final UniqueKey<EcologyRecord> KEY_ECOLOGY_PRIMARY = UniqueKeys0.KEY_ECOLOGY_PRIMARY;
     public static final UniqueKey<EnrollRecord> KEY_ENROLL_PRIMARY = UniqueKeys0.KEY_ENROLL_PRIMARY;
@@ -62,7 +59,6 @@ public class Keys {
 
     private static class UniqueKeys0 {
         public static final UniqueKey<ApproveRecord> KEY_APPROVE_PRIMARY = Internal.createUniqueKey(Approve.APPROVE, "KEY_approve_PRIMARY", new TableField[] { Approve.APPROVE.ID }, true);
-        public static final UniqueKey<ConstantRecord> KEY_CONSTANT_PRIMARY = Internal.createUniqueKey(Constant.CONSTANT, "KEY_constant_PRIMARY", new TableField[] { Constant.CONSTANT.ID }, true);
         public static final UniqueKey<DictionaryRecord> KEY_DICTIONARY_PRIMARY = Internal.createUniqueKey(Dictionary.DICTIONARY, "KEY_dictionary_PRIMARY", new TableField[] { Dictionary.DICTIONARY.ID }, true);
         public static final UniqueKey<EcologyRecord> KEY_ECOLOGY_PRIMARY = Internal.createUniqueKey(Ecology.ECOLOGY, "KEY_ecology_PRIMARY", new TableField[] { Ecology.ECOLOGY.ID }, true);
         public static final UniqueKey<EnrollRecord> KEY_ENROLL_PRIMARY = Internal.createUniqueKey(Enroll.ENROLL, "KEY_enroll_PRIMARY", new TableField[] { Enroll.ENROLL.ID }, true);

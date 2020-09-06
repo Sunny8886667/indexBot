@@ -1,53 +1,44 @@
 package com.scomarlf
 
 import com.scomarlf.bot.IndexBot
+import com.scomarlf.bot.utils.GroupType
 import com.scomarlf.conf.BotConf
 import com.scomarlf.conf.DatabaseConf
+import com.scomarlf.conf.LangConf
+import com.scomarlf.generated.tables.Dictionary.DICTIONARY
+import com.scomarlf.generated.tables.Ecology.ECOLOGY
+import com.scomarlf.generated.tables.pojos.Ecology
+import com.scomarlf.generated.tables.pojos.Dictionary
+import com.scomarlf.service.Instantiate
 import com.scomarlf.utils.HikariManager
-import org.apache.commons.io.FileUtils
-import org.json.JSONObject
 import org.telegram.telegrambots.ApiContextInitializer
 import org.telegram.telegrambots.bots.DefaultBotOptions
 import org.telegram.telegrambots.meta.ApiContext
 import org.telegram.telegrambots.meta.TelegramBotsApi
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException
-import java.io.File
+import java.util.*
 
 fun main(args: Array<String>) {
     // read config file
-    val readStatus = readConf()
+    val readStatus = BotConf.init() && DatabaseConf.init() && LangConf.init()
     if (readStatus) {
         // create database connection
         HikariManager.createConnection()
+        // get approve group and bulletin channel
+        Instantiate.ecologyService.getConf()
+        // get group type
+        getGroupType()
         // start bot
         botStart()
     }
 }
 
 /**
- * get bot and database config
+ * get group/channel/bot type from database
  */
-fun readConf(): Boolean {
-    try {
-        val file = File("conf.json")
-        val content = FileUtils.readFileToString(file, "UTF-8")
-        val jsonObject = JSONObject(content)
-        // for bot
-        val botConfObj = jsonObject.get("bot") as JSONObject
-        BotConf.TOKEN = botConfObj.get("bot_token") as String
-        BotConf.USERNAME = botConfObj.get("bot_username") as String
-        BotConf.ID = BotConf.TOKEN.split(':')[0].toInt()
-        BotConf.CREATER = botConfObj.get("creater") as Int
-        // for database
-        val databaseConfObj = jsonObject.get("database") as JSONObject
-        DatabaseConf.URL = databaseConfObj.get("url") as String
-        DatabaseConf.USERNAME = databaseConfObj.get("username") as String
-        DatabaseConf.PASSWORD = databaseConfObj.get("password") as String
-        return true
-    } catch (e: Exception) {
-        e.printStackTrace()
-        return false
-    }
+fun getGroupType() {
+    val dics: List<Dictionary> = Instantiate.dictionaryService.getListByParentId("classificationType")
+    GroupType.init(dics)
 }
 
 /**
@@ -66,9 +57,9 @@ fun botStart() {
     // Register bot
     try {
         // don't use proxy
-        botsApi.registerBot(IndexBot(DefaultBotOptions()))
+        // botsApi.registerBot(IndexBot(DefaultBotOptions()))
         // use proxy
-        // botsApi.registerBot(IndexBot(botOptions));
+        botsApi.registerBot(IndexBot(botOptions));
     } catch (e: TelegramApiException) {
         e.printStackTrace()
     }

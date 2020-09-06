@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class VRecord implements IVRecord {
 
-    private static final long serialVersionUID = -274966206;
+    private static final long serialVersionUID = -912483188;
 
     private Long          id;
     private String        username;
@@ -33,7 +33,7 @@ public class VRecord implements IVRecord {
     private LocalDateTime createtime;
     private Long          createuser;
     private LocalDateTime updatetime;
-    private LocalDateTime updateuser;
+    private Long          updateuser;
 
     public VRecord() {}
 
@@ -74,7 +74,7 @@ public class VRecord implements IVRecord {
         LocalDateTime createtime,
         Long          createuser,
         LocalDateTime updatetime,
-        LocalDateTime updateuser
+        Long          updateuser
     ) {
         this.id = id;
         this.username = username;
@@ -256,12 +256,12 @@ public class VRecord implements IVRecord {
     }
 
     @Override
-    public LocalDateTime getUpdateuser() {
+    public Long getUpdateuser() {
         return this.updateuser;
     }
 
     @Override
-    public void setUpdateuser(LocalDateTime updateuser) {
+    public void setUpdateuser(Long updateuser) {
         this.updateuser = updateuser;
     }
 

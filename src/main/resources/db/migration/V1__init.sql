@@ -15,16 +15,6 @@ CREATE TABLE `approve`  (
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
--- Table structure for constant
--- ----------------------------
-DROP TABLE IF EXISTS `constant`;
-CREATE TABLE `constant`  (
-  `id` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '唯一标识',
-  `content` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT '内容',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
 -- Table structure for dictionary
 -- ----------------------------
 DROP TABLE IF EXISTS `dictionary`;
@@ -96,7 +86,7 @@ CREATE TABLE `record`  (
   `createTime` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
   `createUser` bigint(20) NULL DEFAULT NULL COMMENT '提交收录申请用户',
   `updateTime` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
-  `updateUser` datetime(0) NULL DEFAULT NULL COMMENT '修改用户',
+  `updateUser` bigint(20) NULL DEFAULT NULL COMMENT '修改用户',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
@@ -119,7 +109,7 @@ CREATE TABLE `user`  (
 -- View structure for v_enroll
 -- ----------------------------
 DROP VIEW IF EXISTS `v_enroll`;
-CREATE ALGORITHM = UNDEFINED DEFINER = `root`@`%` SQL SECURITY DEFINER VIEW `v_enroll` AS select `e`.`id` AS `id`,`e`.`recordId` AS `recordId`,`r`.`username` AS `username`,`r`.`inviteLink` AS `inviteLink`,`r`.`title` AS `title`,`r`.`remark` AS `remark`,`r`.`memberNumber` AS `memberNumber`,`r`.`tag` AS `tag`,`r`.`type` AS `type`,`r`.`classification` AS `classification`,`r`.`placardId` AS `placardId`,`r`.`status` AS `recordStatus`,`e`.`status` AS `status`,`e`.`createUser` AS `createUser`,`e`.`createTime` AS `createTime` from (`enroll` `e` left join `record` `r` on((`e`.`recordId` = `r`.`id`)));
+CREATE ALGORITHM = UNDEFINED DEFINER = `root`@`%` SQL SECURITY DEFINER VIEW `v_enroll` AS select `e`.`id` AS `id`,`e`.`recordId` AS `recordId`,`r`.`username` AS `username`,`r`.`inviteLink` AS `inviteLink`,`r`.`title` AS `title`,`r`.`remark` AS `remark`,`r`.`memberNumber` AS `memberNumber`,`r`.`tag` AS `tag`,`r`.`type` AS `type`,`r`.`classification` AS `classification`,`r`.`placardId` AS `placardId`,`r`.`status` AS `recordStatus`,(select `approve`.`status` from `approve` where (`approve`.`enrollId` = `e`.`id`)) AS `approveStatus`,`e`.`status` AS `status`,`e`.`createUser` AS `createUser`,`e`.`createTime` AS `createTime` from (`enroll` `e` left join `record` `r` on((`e`.`recordId` = `r`.`id`)));
 
 -- ----------------------------
 -- View structure for v_record

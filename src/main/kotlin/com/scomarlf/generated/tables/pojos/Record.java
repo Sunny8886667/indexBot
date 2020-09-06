@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Record implements IRecord {
 
-    private static final long serialVersionUID = -1277753478;
+    private static final long serialVersionUID = 1564556656;
 
     private Long          id;
     private String        username;
@@ -31,7 +31,7 @@ public class Record implements IRecord {
     private LocalDateTime createtime;
     private Long          createuser;
     private LocalDateTime updatetime;
-    private LocalDateTime updateuser;
+    private Long          updateuser;
 
     public Record() {}
 
@@ -68,7 +68,7 @@ public class Record implements IRecord {
         LocalDateTime createtime,
         Long          createuser,
         LocalDateTime updatetime,
-        LocalDateTime updateuser
+        Long          updateuser
     ) {
         this.id = id;
         this.username = username;
@@ -228,12 +228,12 @@ public class Record implements IRecord {
     }
 
     @Override
-    public LocalDateTime getUpdateuser() {
+    public Long getUpdateuser() {
         return this.updateuser;
     }
 
     @Override
-    public void setUpdateuser(LocalDateTime updateuser) {
+    public void setUpdateuser(Long updateuser) {
         this.updateuser = updateuser;
     }
 

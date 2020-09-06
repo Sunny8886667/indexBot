@@ -13,13 +13,14 @@ import org.jooq.Field;
 import org.jooq.ForeignKey;
 import org.jooq.Name;
 import org.jooq.Record;
-import org.jooq.Row15;
+import org.jooq.Row16;
 import org.jooq.Schema;
 import org.jooq.Table;
 import org.jooq.TableField;
 import org.jooq.TableOptions;
 import org.jooq.impl.DSL;
 import org.jooq.impl.TableImpl;
+import org.jooq.types.UInteger;
 
 
 /**
@@ -28,7 +29,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class VEnroll extends TableImpl<VEnrollRecord> {
 
-    private static final long serialVersionUID = -1153459902;
+    private static final long serialVersionUID = -719390443;
 
     /**
      * The reference instance of <code>indexBot.v_enroll</code>
@@ -104,6 +105,11 @@ public class VEnroll extends TableImpl<VEnrollRecord> {
     public final TableField<VEnrollRecord, Boolean> RECORDSTATUS = createField(DSL.name("recordStatus"), org.jooq.impl.SQLDataType.BIT, this, "是否展示");
 
     /**
+     * The column <code>indexBot.v_enroll.approveStatus</code>.
+     */
+    public final TableField<VEnrollRecord, UInteger> APPROVESTATUS = createField(DSL.name("approveStatus"), org.jooq.impl.SQLDataType.INTEGERUNSIGNED, this, "");
+
+    /**
      * The column <code>indexBot.v_enroll.status</code>. 是否提交
      */
     public final TableField<VEnrollRecord, Boolean> STATUS = createField(DSL.name("status"), org.jooq.impl.SQLDataType.BIT, this, "是否提交");
@@ -144,7 +150,7 @@ public class VEnroll extends TableImpl<VEnrollRecord> {
     }
 
     private VEnroll(Name alias, Table<VEnrollRecord> aliased, Field<?>[] parameters) {
-        super(alias, null, aliased, parameters, DSL.comment("VIEW"), TableOptions.view("create view `v_enroll` as select `e`.`id` AS `id`,`e`.`recordId` AS `recordId`,`r`.`username` AS `username`,`r`.`inviteLink` AS `inviteLink`,`r`.`title` AS `title`,`r`.`remark` AS `remark`,`r`.`memberNumber` AS `memberNumber`,`r`.`tag` AS `tag`,`r`.`type` AS `type`,`r`.`classification` AS `classification`,`r`.`placardId` AS `placardId`,`r`.`status` AS `recordStatus`,`e`.`status` AS `status`,`e`.`createUser` AS `createUser`,`e`.`createTime` AS `createTime` from (`indexBot`.`enroll` `e` left join `indexBot`.`record` `r` on((`e`.`recordId` = `r`.`id`)))"));
+        super(alias, null, aliased, parameters, DSL.comment("VIEW"), TableOptions.view("create view `v_enroll` as select `e`.`id` AS `id`,`e`.`recordId` AS `recordId`,`r`.`username` AS `username`,`r`.`inviteLink` AS `inviteLink`,`r`.`title` AS `title`,`r`.`remark` AS `remark`,`r`.`memberNumber` AS `memberNumber`,`r`.`tag` AS `tag`,`r`.`type` AS `type`,`r`.`classification` AS `classification`,`r`.`placardId` AS `placardId`,`r`.`status` AS `recordStatus`,(select `indexBot`.`approve`.`status` from `indexBot`.`approve` where (`indexBot`.`approve`.`enrollId` = `r`.`id`)) AS `approveStatus`,`e`.`status` AS `status`,`e`.`createUser` AS `createUser`,`e`.`createTime` AS `createTime` from (`indexBot`.`enroll` `e` left join `indexBot`.`record` `r` on((`e`.`recordId` = `r`.`id`)))"));
     }
 
     public <O extends Record> VEnroll(Table<O> child, ForeignKey<O, VEnrollRecord> key) {
@@ -183,11 +189,11 @@ public class VEnroll extends TableImpl<VEnrollRecord> {
     }
 
     // -------------------------------------------------------------------------
-    // Row15 type methods
+    // Row16 type methods
     // -------------------------------------------------------------------------
 
     @Override
-    public Row15<String, Long, String, String, String, String, Long, String, String, String, Long, Boolean, Boolean, Long, LocalDateTime> fieldsRow() {
-        return (Row15) super.fieldsRow();
+    public Row16<String, Long, String, String, String, String, Long, String, String, String, Long, Boolean, UInteger, Boolean, Long, LocalDateTime> fieldsRow() {
+        return (Row16) super.fieldsRow();
     }
 }

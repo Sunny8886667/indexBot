@@ -245,14 +245,14 @@ public class RecordDao extends DAOImpl<RecordRecord, com.scomarlf.generated.tabl
     /**
      * Fetch records that have <code>updateUser BETWEEN lowerInclusive AND upperInclusive</code>
      */
-    public List<com.scomarlf.generated.tables.pojos.Record> fetchRangeOfUpdateuser(LocalDateTime lowerInclusive, LocalDateTime upperInclusive) {
+    public List<com.scomarlf.generated.tables.pojos.Record> fetchRangeOfUpdateuser(Long lowerInclusive, Long upperInclusive) {
         return fetchRange(Record.RECORD.UPDATEUSER, lowerInclusive, upperInclusive);
     }
 
     /**
      * Fetch records that have <code>updateUser IN (values)</code>
      */
-    public List<com.scomarlf.generated.tables.pojos.Record> fetchByUpdateuser(LocalDateTime... values) {
+    public List<com.scomarlf.generated.tables.pojos.Record> fetchByUpdateuser(Long... values) {
         return fetch(Record.RECORD.UPDATEUSER, values);
     }
 }

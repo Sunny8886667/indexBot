@@ -7,6 +7,8 @@ package com.scomarlf.generated.tables.interfaces;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+import org.jooq.types.UInteger;
+
 
 /**
  * VIEW
@@ -133,6 +135,16 @@ public interface IVEnroll extends Serializable {
      * Getter for <code>indexBot.v_enroll.recordStatus</code>. 是否展示
      */
     public Boolean getRecordstatus();
+
+    /**
+     * Setter for <code>indexBot.v_enroll.approveStatus</code>.
+     */
+    public void setApprovestatus(UInteger value);
+
+    /**
+     * Getter for <code>indexBot.v_enroll.approveStatus</code>.
+     */
+    public UInteger getApprovestatus();
 
     /**
      * Setter for <code>indexBot.v_enroll.status</code>. 是否提交

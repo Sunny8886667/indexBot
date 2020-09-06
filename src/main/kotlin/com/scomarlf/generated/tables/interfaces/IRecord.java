@@ -157,12 +157,12 @@ public interface IRecord extends Serializable {
     /**
      * Setter for <code>indexBot.record.updateUser</code>. 修改用户
      */
-    public void setUpdateuser(LocalDateTime value);
+    public void setUpdateuser(Long value);
 
     /**
      * Getter for <code>indexBot.record.updateUser</code>. 修改用户
      */
-    public LocalDateTime getUpdateuser();
+    public Long getUpdateuser();
 
     // -------------------------------------------------------------------------
     // FROM and INTO

@@ -28,7 +28,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class VRecord extends TableImpl<VRecordRecord> {
 
-    private static final long serialVersionUID = 776876843;
+    private static final long serialVersionUID = -718684594;
 
     /**
      * The reference instance of <code>indexBot.v_record</code>
@@ -126,7 +126,7 @@ public class VRecord extends TableImpl<VRecordRecord> {
     /**
      * The column <code>indexBot.v_record.updateUser</code>. 修改用户
      */
-    public final TableField<VRecordRecord, LocalDateTime> UPDATEUSER = createField(DSL.name("updateUser"), org.jooq.impl.SQLDataType.LOCALDATETIME, this, "修改用户");
+    public final TableField<VRecordRecord, Long> UPDATEUSER = createField(DSL.name("updateUser"), org.jooq.impl.SQLDataType.BIGINT, this, "修改用户");
 
     /**
      * Create a <code>indexBot.v_record</code> table reference
@@ -197,7 +197,7 @@ public class VRecord extends TableImpl<VRecordRecord> {
     // -------------------------------------------------------------------------
 
     @Override
-    public Row17<Long, String, String, String, String, Long, String, String, String, String, String, Long, Boolean, LocalDateTime, Long, LocalDateTime, LocalDateTime> fieldsRow() {
+    public Row17<Long, String, String, String, String, Long, String, String, String, String, String, Long, Boolean, LocalDateTime, Long, LocalDateTime, Long> fieldsRow() {
         return (Row17) super.fieldsRow();
     }
 }

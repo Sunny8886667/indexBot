@@ -5,7 +5,6 @@ package com.scomarlf.generated;
 
 
 import com.scomarlf.generated.tables.Approve;
-import com.scomarlf.generated.tables.Constant;
 import com.scomarlf.generated.tables.Dictionary;
 import com.scomarlf.generated.tables.Ecology;
 import com.scomarlf.generated.tables.Enroll;
@@ -29,7 +28,7 @@ import org.jooq.impl.SchemaImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Indexbot extends SchemaImpl {
 
-    private static final long serialVersionUID = 1051919751;
+    private static final long serialVersionUID = -2044436609;
 
     /**
      * The reference instance of <code>indexBot</code>
@@ -40,11 +39,6 @@ public class Indexbot extends SchemaImpl {
      * The table <code>indexBot.approve</code>.
      */
     public final Approve APPROVE = Approve.APPROVE;
-
-    /**
-     * The table <code>indexBot.constant</code>.
-     */
-    public final Constant CONSTANT = Constant.CONSTANT;
 
     /**
      * The table <code>indexBot.dictionary</code>.
@@ -103,7 +97,6 @@ public class Indexbot extends SchemaImpl {
     public final List<Table<?>> getTables() {
         return Arrays.<Table<?>>asList(
             Approve.APPROVE,
-            Constant.CONSTANT,
             Dictionary.DICTIONARY,
             Ecology.ECOLOGY,
             Enroll.ENROLL,

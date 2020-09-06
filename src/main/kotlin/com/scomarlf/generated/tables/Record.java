@@ -31,7 +31,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Record extends TableImpl<RecordRecord> {
 
-    private static final long serialVersionUID = -2005519983;
+    private static final long serialVersionUID = -1326826434;
 
     /**
      * The reference instance of <code>indexBot.record</code>
@@ -119,7 +119,7 @@ public class Record extends TableImpl<RecordRecord> {
     /**
      * The column <code>indexBot.record.updateUser</code>. 修改用户
      */
-    public final TableField<RecordRecord, LocalDateTime> UPDATEUSER = createField(DSL.name("updateUser"), org.jooq.impl.SQLDataType.LOCALDATETIME, this, "修改用户");
+    public final TableField<RecordRecord, Long> UPDATEUSER = createField(DSL.name("updateUser"), org.jooq.impl.SQLDataType.BIGINT, this, "修改用户");
 
     /**
      * Create a <code>indexBot.record</code> table reference
@@ -200,7 +200,7 @@ public class Record extends TableImpl<RecordRecord> {
     // -------------------------------------------------------------------------
 
     @Override
-    public Row15<Long, String, String, String, String, Long, String, String, String, Long, Boolean, LocalDateTime, Long, LocalDateTime, LocalDateTime> fieldsRow() {
+    public Row15<Long, String, String, String, String, Long, String, String, String, Long, Boolean, LocalDateTime, Long, LocalDateTime, Long> fieldsRow() {
         return (Row15) super.fieldsRow();
     }
 }

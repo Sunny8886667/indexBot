@@ -5,7 +5,6 @@ package com.scomarlf.generated;
 
 
 import com.scomarlf.generated.tables.Approve;
-import com.scomarlf.generated.tables.Constant;
 import com.scomarlf.generated.tables.Dictionary;
 import com.scomarlf.generated.tables.Ecology;
 import com.scomarlf.generated.tables.Enroll;
@@ -26,11 +25,6 @@ public class Tables {
      * The table <code>indexBot.approve</code>.
      */
     public static final Approve APPROVE = Approve.APPROVE;
-
-    /**
-     * The table <code>indexBot.constant</code>.
-     */
-    public static final Constant CONSTANT = Constant.CONSTANT;
 
     /**
      * The table <code>indexBot.dictionary</code>.

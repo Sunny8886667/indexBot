@@ -8,6 +8,8 @@ import com.scomarlf.generated.tables.interfaces.IVEnroll;
 
 import java.time.LocalDateTime;
 
+import org.jooq.types.UInteger;
+
 
 /**
  * VIEW
@@ -15,7 +17,7 @@ import java.time.LocalDateTime;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class VEnroll implements IVEnroll {
 
-    private static final long serialVersionUID = 202765711;
+    private static final long serialVersionUID = -1861543913;
 
     private String        id;
     private Long          recordid;
@@ -29,6 +31,7 @@ public class VEnroll implements IVEnroll {
     private String        classification;
     private Long          placardid;
     private Boolean       recordstatus;
+    private UInteger      approvestatus;
     private Boolean       status;
     private Long          createuser;
     private LocalDateTime createtime;
@@ -48,6 +51,7 @@ public class VEnroll implements IVEnroll {
         this.classification = value.getClassification();
         this.placardid = value.getPlacardid();
         this.recordstatus = value.getRecordstatus();
+        this.approvestatus = value.getApprovestatus();
         this.status = value.getStatus();
         this.createuser = value.getCreateuser();
         this.createtime = value.getCreatetime();
@@ -66,6 +70,7 @@ public class VEnroll implements IVEnroll {
         String        classification,
         Long          placardid,
         Boolean       recordstatus,
+        UInteger      approvestatus,
         Boolean       status,
         Long          createuser,
         LocalDateTime createtime
@@ -82,6 +87,7 @@ public class VEnroll implements IVEnroll {
         this.classification = classification;
         this.placardid = placardid;
         this.recordstatus = recordstatus;
+        this.approvestatus = approvestatus;
         this.status = status;
         this.createuser = createuser;
         this.createtime = createtime;
@@ -208,6 +214,16 @@ public class VEnroll implements IVEnroll {
     }
 
     @Override
+    public UInteger getApprovestatus() {
+        return this.approvestatus;
+    }
+
+    @Override
+    public void setApprovestatus(UInteger approvestatus) {
+        this.approvestatus = approvestatus;
+    }
+
+    @Override
     public Boolean getStatus() {
         return this.status;
     }
@@ -253,6 +269,7 @@ public class VEnroll implements IVEnroll {
         sb.append(", ").append(classification);
         sb.append(", ").append(placardid);
         sb.append(", ").append(recordstatus);
+        sb.append(", ").append(approvestatus);
         sb.append(", ").append(status);
         sb.append(", ").append(createuser);
         sb.append(", ").append(createtime);
@@ -279,6 +296,7 @@ public class VEnroll implements IVEnroll {
         setClassification(from.getClassification());
         setPlacardid(from.getPlacardid());
         setRecordstatus(from.getRecordstatus());
+        setApprovestatus(from.getApprovestatus());
         setStatus(from.getStatus());
         setCreateuser(from.getCreateuser());
         setCreatetime(from.getCreatetime());

@@ -42,7 +42,7 @@ elif [ "$1" == "upgrade" ]; then
   bash $0 start
 elif [ "$1" == "run" ]; then
   mvn install
-  # move conf.json file to application folder
+  # move conf.json and lang.json file to application folder
   cp conf.json target/
   cp lang.json target/
   java -jar $(readlink -e ./)/target/indexbot-1.1.jar

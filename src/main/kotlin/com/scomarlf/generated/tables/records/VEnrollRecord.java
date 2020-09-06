@@ -10,18 +10,19 @@ import com.scomarlf.generated.tables.interfaces.IVEnroll;
 import java.time.LocalDateTime;
 
 import org.jooq.Field;
-import org.jooq.Record15;
-import org.jooq.Row15;
+import org.jooq.Record16;
+import org.jooq.Row16;
 import org.jooq.impl.TableRecordImpl;
+import org.jooq.types.UInteger;
 
 
 /**
  * VIEW
  */
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
-public class VEnrollRecord extends TableRecordImpl<VEnrollRecord> implements Record15<String, Long, String, String, String, String, Long, String, String, String, Long, Boolean, Boolean, Long, LocalDateTime>, IVEnroll {
+public class VEnrollRecord extends TableRecordImpl<VEnrollRecord> implements Record16<String, Long, String, String, String, String, Long, String, String, String, Long, Boolean, UInteger, Boolean, Long, LocalDateTime>, IVEnroll {
 
-    private static final long serialVersionUID = -590337771;
+    private static final long serialVersionUID = -863854967;
 
     /**
      * Setter for <code>indexBot.v_enroll.id</code>. 主键
@@ -216,11 +217,27 @@ public class VEnrollRecord extends TableRecordImpl<VEnrollRecord> implements Rec
     }
 
     /**
+     * Setter for <code>indexBot.v_enroll.approveStatus</code>.
+     */
+    @Override
+    public void setApprovestatus(UInteger value) {
+        set(12, value);
+    }
+
+    /**
+     * Getter for <code>indexBot.v_enroll.approveStatus</code>.
+     */
+    @Override
+    public UInteger getApprovestatus() {
+        return (UInteger) get(12);
+    }
+
+    /**
      * Setter for <code>indexBot.v_enroll.status</code>. 是否提交
      */
     @Override
     public void setStatus(Boolean value) {
-        set(12, value);
+        set(13, value);
     }
 
     /**
@@ -228,7 +245,7 @@ public class VEnrollRecord extends TableRecordImpl<VEnrollRecord> implements Rec
      */
     @Override
     public Boolean getStatus() {
-        return (Boolean) get(12);
+        return (Boolean) get(13);
     }
 
     /**
@@ -236,7 +253,7 @@ public class VEnrollRecord extends TableRecordImpl<VEnrollRecord> implements Rec
      */
     @Override
     public void setCreateuser(Long value) {
-        set(13, value);
+        set(14, value);
     }
 
     /**
@@ -244,7 +261,7 @@ public class VEnrollRecord extends TableRecordImpl<VEnrollRecord> implements Rec
      */
     @Override
     public Long getCreateuser() {
-        return (Long) get(13);
+        return (Long) get(14);
     }
 
     /**
@@ -252,7 +269,7 @@ public class VEnrollRecord extends TableRecordImpl<VEnrollRecord> implements Rec
      */
     @Override
     public void setCreatetime(LocalDateTime value) {
-        set(14, value);
+        set(15, value);
     }
 
     /**
@@ -260,21 +277,21 @@ public class VEnrollRecord extends TableRecordImpl<VEnrollRecord> implements Rec
      */
     @Override
     public LocalDateTime getCreatetime() {
-        return (LocalDateTime) get(14);
+        return (LocalDateTime) get(15);
     }
 
     // -------------------------------------------------------------------------
-    // Record15 type implementation
+    // Record16 type implementation
     // -------------------------------------------------------------------------
 
     @Override
-    public Row15<String, Long, String, String, String, String, Long, String, String, String, Long, Boolean, Boolean, Long, LocalDateTime> fieldsRow() {
-        return (Row15) super.fieldsRow();
+    public Row16<String, Long, String, String, String, String, Long, String, String, String, Long, Boolean, UInteger, Boolean, Long, LocalDateTime> fieldsRow() {
+        return (Row16) super.fieldsRow();
     }
 
     @Override
-    public Row15<String, Long, String, String, String, String, Long, String, String, String, Long, Boolean, Boolean, Long, LocalDateTime> valuesRow() {
-        return (Row15) super.valuesRow();
+    public Row16<String, Long, String, String, String, String, Long, String, String, String, Long, Boolean, UInteger, Boolean, Long, LocalDateTime> valuesRow() {
+        return (Row16) super.valuesRow();
     }
 
     @Override
@@ -338,17 +355,22 @@ public class VEnrollRecord extends TableRecordImpl<VEnrollRecord> implements Rec
     }
 
     @Override
-    public Field<Boolean> field13() {
+    public Field<UInteger> field13() {
+        return VEnroll.V_ENROLL.APPROVESTATUS;
+    }
+
+    @Override
+    public Field<Boolean> field14() {
         return VEnroll.V_ENROLL.STATUS;
     }
 
     @Override
-    public Field<Long> field14() {
+    public Field<Long> field15() {
         return VEnroll.V_ENROLL.CREATEUSER;
     }
 
     @Override
-    public Field<LocalDateTime> field15() {
+    public Field<LocalDateTime> field16() {
         return VEnroll.V_ENROLL.CREATETIME;
     }
 
@@ -413,17 +435,22 @@ public class VEnrollRecord extends TableRecordImpl<VEnrollRecord> implements Rec
     }
 
     @Override
-    public Boolean component13() {
+    public UInteger component13() {
+        return getApprovestatus();
+    }
+
+    @Override
+    public Boolean component14() {
         return getStatus();
     }
 
     @Override
-    public Long component14() {
+    public Long component15() {
         return getCreateuser();
     }
 
     @Override
-    public LocalDateTime component15() {
+    public LocalDateTime component16() {
         return getCreatetime();
     }
 
@@ -488,17 +515,22 @@ public class VEnrollRecord extends TableRecordImpl<VEnrollRecord> implements Rec
     }
 
     @Override
-    public Boolean value13() {
+    public UInteger value13() {
+        return getApprovestatus();
+    }
+
+    @Override
+    public Boolean value14() {
         return getStatus();
     }
 
     @Override
-    public Long value14() {
+    public Long value15() {
         return getCreateuser();
     }
 
     @Override
-    public LocalDateTime value15() {
+    public LocalDateTime value16() {
         return getCreatetime();
     }
 
@@ -575,25 +607,31 @@ public class VEnrollRecord extends TableRecordImpl<VEnrollRecord> implements Rec
     }
 
     @Override
-    public VEnrollRecord value13(Boolean value) {
+    public VEnrollRecord value13(UInteger value) {
+        setApprovestatus(value);
+        return this;
+    }
+
+    @Override
+    public VEnrollRecord value14(Boolean value) {
         setStatus(value);
         return this;
     }
 
     @Override
-    public VEnrollRecord value14(Long value) {
+    public VEnrollRecord value15(Long value) {
         setCreateuser(value);
         return this;
     }
 
     @Override
-    public VEnrollRecord value15(LocalDateTime value) {
+    public VEnrollRecord value16(LocalDateTime value) {
         setCreatetime(value);
         return this;
     }
 
     @Override
-    public VEnrollRecord values(String value1, Long value2, String value3, String value4, String value5, String value6, Long value7, String value8, String value9, String value10, Long value11, Boolean value12, Boolean value13, Long value14, LocalDateTime value15) {
+    public VEnrollRecord values(String value1, Long value2, String value3, String value4, String value5, String value6, Long value7, String value8, String value9, String value10, Long value11, Boolean value12, UInteger value13, Boolean value14, Long value15, LocalDateTime value16) {
         value1(value1);
         value2(value2);
         value3(value3);
@@ -609,6 +647,7 @@ public class VEnrollRecord extends TableRecordImpl<VEnrollRecord> implements Rec
         value13(value13);
         value14(value14);
         value15(value15);
+        value16(value16);
         return this;
     }
 
@@ -630,6 +669,7 @@ public class VEnrollRecord extends TableRecordImpl<VEnrollRecord> implements Rec
         setClassification(from.getClassification());
         setPlacardid(from.getPlacardid());
         setRecordstatus(from.getRecordstatus());
+        setApprovestatus(from.getApprovestatus());
         setStatus(from.getStatus());
         setCreateuser(from.getCreateuser());
         setCreatetime(from.getCreatetime());
@@ -655,7 +695,7 @@ public class VEnrollRecord extends TableRecordImpl<VEnrollRecord> implements Rec
     /**
      * Create a detached, initialised VEnrollRecord
      */
-    public VEnrollRecord(String id, Long recordid, String username, String invitelink, String title, String remark, Long membernumber, String tag, String type, String classification, Long placardid, Boolean recordstatus, Boolean status, Long createuser, LocalDateTime createtime) {
+    public VEnrollRecord(String id, Long recordid, String username, String invitelink, String title, String remark, Long membernumber, String tag, String type, String classification, Long placardid, Boolean recordstatus, UInteger approvestatus, Boolean status, Long createuser, LocalDateTime createtime) {
         super(VEnroll.V_ENROLL);
 
         set(0, id);
@@ -670,8 +710,9 @@ public class VEnrollRecord extends TableRecordImpl<VEnrollRecord> implements Rec
         set(9, classification);
         set(10, placardid);
         set(11, recordstatus);
-        set(12, status);
-        set(13, createuser);
-        set(14, createtime);
+        set(12, approvestatus);
+        set(13, status);
+        set(14, createuser);
+        set(15, createtime);
     }
 }
