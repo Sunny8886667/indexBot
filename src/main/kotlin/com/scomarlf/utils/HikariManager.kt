@@ -13,6 +13,7 @@ class HikariManager {
 
     companion object {
         var ds: HikariDataSource? = null
+        var connection: Connection? = null
 
         fun createConnection() {
             val config = HikariConfig()
@@ -24,14 +25,11 @@ class HikariManager {
             config.addDataSourceProperty("prepStmtCacheSqlLimit", "2048")
             config.addDataSourceProperty("useServerPrepStmts", "true")
             ds = HikariDataSource(config)
-        }
-
-        fun getConnection(): Connection? {
-            return ds?.connection
+            connection = ds!!.connection;
         }
 
         fun getDSLContext(): DSLContext {
-            return DSL.using(getConnection(), SQLDialect.MYSQL)
+            return DSL.using(connection, SQLDialect.MYSQL)
         }
 
     }
