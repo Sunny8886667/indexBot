@@ -1,5 +1,5 @@
-# indexBot
-Telegram group/channel/bot index bot  
+＃电报搜索bot
+电报组/频道/机器人索引机器人  
 Telegram 索引导航机器人  
 公共实例：[TGX-索引秘书](https://t.me/zh_secretary_bot)
 
